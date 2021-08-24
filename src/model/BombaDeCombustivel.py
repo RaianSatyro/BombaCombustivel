@@ -2,7 +2,7 @@
 ### (X) Abastecimento do estoque da bomba. 
 ### ( ) Colocar um dicinario com tipo de combustivel, preço e quat de estoque.
 ### ( ) Relatorio de estoque e vendas do dia.
-### ( ) Mensagem de estoque minimo de combustivel (acabou o estoque).
+### (X) Mensagem de estoque minimo de combustivel (acabou o estoque).
 ### ( ) Controle e menutenção da bomba.
 
 
@@ -24,12 +24,14 @@ class BombaCombustivel():
         else:
             print('Combústivel insuficiente')
     
+    
     #método onde é informado a quantidade em litros de combustível e mostra o valor a ser pago pelo cliente.
     def abastecer_por_litro(self, qnt_litro):
         if self.__verifica_reservatorio(qnt_litro):
             total = self.__valor_litro * qnt_litro
             self.__alterar_quantidade_combustivel(qnt_litro)
-            return f'R${total:.2f}'
+            self.estoque_minimo()
+            print (f'R${total:.2f}')
     
 
     #altera o valor do litro do combustível.
@@ -62,3 +64,17 @@ class BombaCombustivel():
             print(f'Não é possivél abastecer, a capacidade maxima atual é de {limite}')
 
         
+    def relatorio_venda (self):
+        pass
+
+
+    def controle_manutencao(self):
+        pass
+
+
+    def estoque_minimo(self):
+        if self.__quantidade_combustivel < 100:
+            print(f'Estoque baixo, abasteça o reservatorio.')
+        else:
+            pass
+
