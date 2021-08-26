@@ -1,21 +1,23 @@
-import sys
-sys.path.insert(1, 'C:/Users/Rio/Documents/code/BombaCombustivel') 
-
 from src.model.BombaDeCombustivel import BombaCombustivel
 
 
 def test_abastecimento():
     bomba1 = BombaCombustivel('Gasolina', 2.39, 140)
-    print('____________________________')
-    print(bomba1.abastecer_por_litro(20))
 
-    print('____________________________')
-    print(bomba1.abastecer_por_litro(50))
  
-    print('____________________________')
-    print(bomba1.abastecer_por_litro(15))
+    print(f'''
+    ________________________________________________________
 
-    print('____________________________')
-    print(bomba1.abastecer_por_litro(30))
+    {bomba1.abastecer_por_litro(100)}
+    Estoque restante: {bomba1.quantidade_combustivel} litros 
+    ________________________________________________________
+    
+    {bomba1.abastecer_reservatorio(480)}  
+    ________________________________________________________    
+    
+    {bomba1.abastecer_por_valor(20)}
+    Estoque restante: {bomba1.quantidade_combustivel} litros 
 
-    print('____________________________')
+    ''')
+
+    

@@ -31,7 +31,7 @@ class BombaCombustivel():
             total = self.__valor_litro * qnt_litro
             self.__alterar_quantidade_combustivel(qnt_litro)
             self.estoque_minimo()
-            print (f'R${total:.2f}')
+            return f'R${total:.2f}'
     
 
     #altera o valor do litro do combustível.
@@ -49,32 +49,40 @@ class BombaCombustivel():
         self.__quantidade_combustivel -= saida_combustivel
 
     
+    #Verifica se tem combustivel
     def __verifica_reservatorio(self, litros):
         return litros <= self.__quantidade_combustivel
 
-
+    #Abastece o reservatorio
     def abastecer_reservatorio(self, qnt_entrada):
         limite = self.__capacidade_estoque - self.__quantidade_combustivel
         
         if qnt_entrada <= limite:
             self.__quantidade_combustivel += qnt_entrada
-            print('Abastecendo')
+            return f'Abastecido {qnt_entrada} litros. Qunt. total é de {self.__quantidade_combustivel} litros'
             
         else:
             print(f'Não é possivél abastecer, a capacidade maxima atual é de {limite}')
 
         
+        
     def relatorio_venda (self):
         pass
+
 
 
     def controle_manutencao(self):
         pass
 
 
+    #Avisa do estoque minino
     def estoque_minimo(self):
         if self.__quantidade_combustivel < 100:
             print(f'Estoque baixo, abasteça o reservatorio.')
         else:
             pass
 
+    
+    @property
+    def quantidade_combustivel(self):
+        return round(self.__quantidade_combustivel, 2)
